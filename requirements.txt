@@ -1,3 +1,6 @@
 requests
 geopy
+geocoder
+opensky-api
+Flask
 python-dotenv
