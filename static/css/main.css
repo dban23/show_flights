@@ -5,6 +5,7 @@
   height: 100vh;
   text-align: center;
   font-size: 20px;
+  color: white;
 }
 
 form{
@@ -22,3 +23,11 @@ button{
   font-size: 28px;
   margin-left: 10px;
 }
+
+body{
+  background-image: url("plane.jpg");
+  background-size: cover;
+  background-position: 0% 35%;
+  background-repeat: no-repeat;
+}
+
