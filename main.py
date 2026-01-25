@@ -50,21 +50,13 @@ class Flight_locator:
         apiKey = os.getenv("FLIGHTAWARE_API_KEY")
         apiUrl = "https://aeroapi.flightaware.com/aeroapi/flights/search"
 
-        # minlat = 45.695
-        # maxlat = 45.72093
-        # minlon = 15.988
-        # maxlon = 16.03191
-
         latlong = self.define_square()
 
         if latlong is None:
             return "Location not found."
         else:
             auth_header = {"x-apikey": apiKey}
-            payload = {
-                "query": f'-latlong "{latlong}"'
-                # "query": '-latlong "45.68 15.8 45.9 16.1"'
-            }
+            payload = {"query": f'-latlong "{latlong}"'}
 
             response = requests.get(apiUrl, headers=auth_header, params=payload)
             code = response.status_code
@@ -79,14 +71,34 @@ class Flight_locator:
                 else:
                     output = ""
                     for flight in flights:
-                        flight_number = flight["ident"]
-                        from_name = flight["origin"]["name"]
-                        from_city = flight["origin"]["city"]
-                        to = flight["destination"]["name"]
-                        to_city = flight["destination"]["city"]
-                    output += f"Flight number {flight_number} from {from_name}, {
+                        if flight["ident"] == "null":
+                            flight_number = "Unknown"
+                        else:
+                            flight_number = flight["ident"]
+
+                        if flight["origin"]["name"] == "null":
+                            from_name = "Unknown"
+                        else:
+                            from_name = flight["origin"]["name"]
+
+                        if flight["origin"]["city"] == "null":
+                            from_city = "Unknown"
+                        else:
+                            from_city = flight["origin"]["city"]
+
+                        if flight["destination"] == "null":
+                            to = "Unknown"
+                        else:
+                            to = flight["destination"]["name"]
+
+                        if flight["destination"] == "null":
+                            to_city = "Unknown"
+                        else:
+                            to_city = flight["destination"]["city"]
+
+                    output += f"Flight number: {flight_number}\nFrom: {from_name}, {
                         from_city
-                    } to {to}, {to_city}.<br>"
+                    }\nTo: {to}, {to_city}."
                     return output
             else:
                 return f"Error executing request: {code}"

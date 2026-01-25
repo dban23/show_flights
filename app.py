@@ -13,8 +13,8 @@ def make_page():
 def locate_flight():
     address = request.form.get("address")
     flight_locator = Flight_locator(address)
-
-    return flight_locator.get_flight()
+    flight = flight_locator.get_flight()
+    return render_template("second_page.html", msg=flight)
 
 
 if __name__ == "__main__":
