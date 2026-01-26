@@ -8,6 +8,20 @@
   color: white;
 }
 
+h1{
+    background-color: SeaGreen;
+    color: White;
+    padding: 35px 0px;
+    text-align: center;
+    width: 100%;
+    border-radius: 10px;
+}
+
+pre {
+    color: SeaGreen;
+    font-size: 25px;
+}
+
 form{
   margin-top: 50px;
 }
@@ -16,18 +30,21 @@ input[type='text']{
   padding: 10px;
   width: 500px;
   font-size: 28px;
+  color: SeaGreen;
 }
 
 button{
   padding: 10px 20px;
   font-size: 28px;
   margin-left: 10px;
+  color: SeaGreen;
+  background-color: white;
 }
 
 body{
   background-image: url("plane.jpg");
   background-size: cover;
-  background-position: 0% 35%;
+  background-position: 0% 20%;
   background-repeat: no-repeat;
 }
 
