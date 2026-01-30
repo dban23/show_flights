@@ -71,27 +71,27 @@ class Flight_locator:
                 else:
                     output = ""
                     for flight in flights:
-                        if flight["ident"] == "null":
+                        if flight["ident"] is None:
                             flight_number = "Unknown"
                         else:
                             flight_number = flight["ident"]
 
-                        if flight["origin"]["name"] == "null":
+                        if flight["origin"]["name"] is None:
                             from_name = "Unknown"
                         else:
                             from_name = flight["origin"]["name"]
 
-                        if flight["origin"]["city"] == "null":
+                        if flight["origin"]["city"] is None:
                             from_city = "Unknown"
                         else:
                             from_city = flight["origin"]["city"]
 
-                        if flight["destination"] == "null":
+                        if flight["destination"] is None:
                             to = "Unknown"
                         else:
                             to = flight["destination"]["name"]
 
-                        if flight["destination"] == "null":
+                        if flight["destination"] is None:
                             to_city = "Unknown"
                         else:
                             to_city = flight["destination"]["city"]
