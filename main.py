@@ -96,9 +96,7 @@ class Flight_locator:
                         else:
                             to_city = flight["destination"]["city"]
 
-                    output += f"Flight number: {flight_number}\nFrom: {from_name}, {
-                        from_city
-                    }\nTo: {to}, {to_city}."
+                    output += f"Flight number: {flight_number}\nFrom: {from_name}, {from_city}\nTo: {to}, {to_city}."
                     return output
             else:
                 return f"Error executing request: {code}"
