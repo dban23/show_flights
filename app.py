@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request
+from flask import Flask, render_template, request
 from main import Flight_locator
 
 app = Flask(__name__)
@@ -6,7 +6,14 @@ app = Flask(__name__)
 
 @app.route("/")
 def make_page():
-    return render_template("index.html")
+    ua = request.headers.get("User-Agent")
+    ua_split = ua.split(" ")
+    platform = ua_split[1].lstrip("(").rstrip(";")
+
+    if platform in ("Linux", "iPhone"):
+        return render_template("mobile_index.html")
+    else:
+        return render_template("index.html")
 
 
 @app.route("/run_get_flight", methods=["POST"])

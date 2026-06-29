@@ -1,0 +1,20 @@
+
+{% extends 'mobile_base.html' %}
+
+{% block head %}
+{% endblock %}
+
+
+{% block body %}
+  <div class="centering">
+    <h2> Show Flight </h2>
+    <h5> Where is the plane going? </h5>
+    <pre> Input your location below and find out where is the plane above you going to! </pre>
+
+    <form action='/run_get_flight' method='post'>
+      <input type='text' id='address' name='address' placeholder='Your street and city'>
+      <button type='submit'> Locate flight! </button>
+    </form>
+  </div>
+{% endblock %}
+
